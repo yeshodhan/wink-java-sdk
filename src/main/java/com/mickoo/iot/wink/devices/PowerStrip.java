@@ -11,18 +11,10 @@ import java.util.List;
  */
 public class PowerStrip extends WinkDevice {
 
-    private String power_strip_id;
     private List<Outlet> outlets;
+    private PowerStripLastReading last_reading;
 
     public PowerStrip() {
-    }
-
-    public String getPower_strip_id() {
-        return power_strip_id;
-    }
-
-    public void setPower_strip_id(String power_strip_id) {
-        this.power_strip_id = power_strip_id;
     }
 
     public List<Outlet> getOutlets() {
@@ -33,20 +25,35 @@ public class PowerStrip extends WinkDevice {
         this.outlets = outlets;
     }
 
-    public static class Outlet {
-        private String outlet_id;
+    public PowerStripLastReading getLast_reading() {
+        return last_reading;
+    }
+
+    public void setLast_reading(PowerStripLastReading last_reading) {
+        this.last_reading = last_reading;
+    }
+
+    public static class PowerStripLastReading extends LastReading {
+        private Boolean connection;
+
+        public PowerStripLastReading() {
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
+    }
+
+    public static class Outlet extends WinkDevice {
+
         private Integer outlet_index;
-        private Boolean powered;
+        private OutletLastReading last_reading;
 
         public Outlet() {
-        }
-
-        public String getOutlet_id() {
-            return outlet_id;
-        }
-
-        public void setOutlet_id(String outlet_id) {
-            this.outlet_id = outlet_id;
         }
 
         public Integer getOutlet_index() {
@@ -55,6 +62,21 @@ public class PowerStrip extends WinkDevice {
 
         public void setOutlet_index(Integer outlet_index) {
             this.outlet_index = outlet_index;
+        }
+
+        public OutletLastReading getLast_reading() {
+            return last_reading;
+        }
+
+        public void setLast_reading(OutletLastReading last_reading) {
+            this.last_reading = last_reading;
+        }
+    }
+
+    public static class OutletLastReading extends LastReading {
+        private Boolean powered;
+
+        public OutletLastReading() {
         }
 
         public Boolean getPowered() {

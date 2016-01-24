@@ -9,21 +9,10 @@ package com.mickoo.iot.wink.devices;
  */
 public class PiggyBank extends WinkDevice {
 
-    private String piggy_bank_id;
     private String color;
-
-    private Double battery;
-    private Boolean vibration;
+    private PiggyBankLastReading last_reading;
 
     public PiggyBank() {
-    }
-
-    public String getPiggy_bank_id() {
-        return piggy_bank_id;
-    }
-
-    public void setPiggy_bank_id(String piggy_bank_id) {
-        this.piggy_bank_id = piggy_bank_id;
     }
 
     public String getColor() {
@@ -34,19 +23,44 @@ public class PiggyBank extends WinkDevice {
         this.color = color;
     }
 
-    public Double getBattery() {
-        return battery;
+    public PiggyBankLastReading getLast_reading() {
+        return last_reading;
     }
 
-    public void setBattery(Double battery) {
-        this.battery = battery;
+    public void setLast_reading(PiggyBankLastReading last_reading) {
+        this.last_reading = last_reading;
     }
 
-    public Boolean getVibration() {
-        return vibration;
-    }
+    public static class PiggyBankLastReading extends LastReading {
+        private Boolean connection;
+        private Double battery;
+        private Boolean vibration;
 
-    public void setVibration(Boolean vibration) {
-        this.vibration = vibration;
+        public PiggyBankLastReading() {
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
+
+        public Double getBattery() {
+            return battery;
+        }
+
+        public void setBattery(Double battery) {
+            this.battery = battery;
+        }
+
+        public Boolean getVibration() {
+            return vibration;
+        }
+
+        public void setVibration(Boolean vibration) {
+            this.vibration = vibration;
+        }
     }
 }

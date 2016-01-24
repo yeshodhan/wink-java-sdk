@@ -9,25 +9,60 @@ package com.mickoo.iot.wink.devices;
  */
 public class BinarySwitch extends WinkDevice {
 
-    private Boolean binary_switch_id;
-    private Boolean powered;
+    private BinarySwitchDesiredState desired_state;
+    private BinarySwitchLastReading last_reading;
+
 
     public BinarySwitch() {
     }
 
-    public Boolean getBinary_switch_id() {
-        return binary_switch_id;
+    public BinarySwitchDesiredState getDesired_state() {
+        return desired_state;
     }
 
-    public void setBinary_switch_id(Boolean binary_switch_id) {
-        this.binary_switch_id = binary_switch_id;
+    public void setDesired_state(BinarySwitchDesiredState desired_state) {
+        this.desired_state = desired_state;
     }
 
-    public Boolean getPowered() {
-        return powered;
+    public BinarySwitchLastReading getLast_reading() {
+        return last_reading;
     }
 
-    public void setPowered(Boolean powered) {
-        this.powered = powered;
+    public void setLast_reading(BinarySwitchLastReading last_reading) {
+        this.last_reading = last_reading;
     }
+
+    public static class BinarySwitchDesiredState extends DesiredState{
+
+        private Boolean powered;
+
+        public BinarySwitchDesiredState() {
+        }
+
+        public Boolean getPowered() {
+            return powered;
+        }
+
+        public void setPowered(Boolean powered) {
+            this.powered = powered;
+        }
+
+    }
+
+    public static class BinarySwitchLastReading extends LastReading {
+
+        private Boolean connection;
+
+        public BinarySwitchLastReading() {
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
+    }
+
 }

@@ -11,20 +11,10 @@ import java.util.List;
  */
 public class Sprinkler extends WinkDevice {
 
-    private String sprinkler_id;
     private List<Zone> zones;
-    private List<Integer> run_zones;
-    private List<Integer> run_zones_durations;
+    private SprinklerDesiredState desired_state;
 
     public Sprinkler() {
-    }
-
-    public String getSprinkler_id() {
-        return sprinkler_id;
-    }
-
-    public void setSprinkler_id(String sprinkler_id) {
-        this.sprinkler_id = sprinkler_id;
     }
 
     public List<Zone> getZones() {
@@ -35,45 +25,46 @@ public class Sprinkler extends WinkDevice {
         this.zones = zones;
     }
 
-    public List<Integer> getRun_zones() {
-        return run_zones;
+    public SprinklerDesiredState getDesired_state() {
+        return desired_state;
     }
 
-    public void setRun_zones(List<Integer> run_zones) {
-        this.run_zones = run_zones;
+    public void setDesired_state(SprinklerDesiredState desired_state) {
+        this.desired_state = desired_state;
     }
 
-    public List<Integer> getRun_zones_durations() {
-        return run_zones_durations;
+    public static class SprinklerDesiredState extends DesiredState {
+        private List<Integer> run_zones;
+        private List<Integer> run_zones_durations;
+
+        public SprinklerDesiredState() {
+        }
+
+        public List<Integer> getRun_zones() {
+            return run_zones;
+        }
+
+        public void setRun_zones(List<Integer> run_zones) {
+            this.run_zones = run_zones;
+        }
+
+        public List<Integer> getRun_zones_durations() {
+            return run_zones_durations;
+        }
+
+        public void setRun_zones_durations(List<Integer> run_zones_durations) {
+            this.run_zones_durations = run_zones_durations;
+        }
     }
 
-    public void setRun_zones_durations(List<Integer> run_zones_durations) {
-        this.run_zones_durations = run_zones_durations;
-    }
+    public static class Zone extends WinkDevice {
 
-    public static class Zone {
-        
-        private String zone_id;
         private Integer zone_index;
         private Boolean enabled;
-
-        private Shade shade;
-        private Nozzle nozzle;
-        private Slope slope;
-        private Soil soil;
-        private Vegetation vegetation;
-
-        private Boolean powered;
+        private ZoneDesiredState desired_state;
+        private ZoneLastReading last_reading;
 
         public Zone() {
-        }
-
-        public String getZone_id() {
-            return zone_id;
-        }
-
-        public void setZone_id(String zone_id) {
-            this.zone_id = zone_id;
         }
 
         public Integer getZone_index() {
@@ -90,6 +81,33 @@ public class Sprinkler extends WinkDevice {
 
         public void setEnabled(Boolean enabled) {
             this.enabled = enabled;
+        }
+
+        public ZoneDesiredState getDesired_state() {
+            return desired_state;
+        }
+
+        public void setDesired_state(ZoneDesiredState desired_state) {
+            this.desired_state = desired_state;
+        }
+
+        public ZoneLastReading getLast_reading() {
+            return last_reading;
+        }
+
+        public void setLast_reading(ZoneLastReading last_reading) {
+            this.last_reading = last_reading;
+        }
+    }
+
+    public static class ZoneDesiredState extends DesiredState {
+        private Shade shade;
+        private Nozzle nozzle;
+        private Slope slope;
+        private Soil soil;
+        private Vegetation vegetation;
+
+        public ZoneDesiredState() {
         }
 
         public Shade getShade() {
@@ -131,24 +149,38 @@ public class Sprinkler extends WinkDevice {
         public void setVegetation(Vegetation vegetation) {
             this.vegetation = vegetation;
         }
+    }
 
-        public enum Shade {
-            none, moderate, mostly
-        }
-        
-        public enum Nozzle {
-            fixed_spray_head, drip, manual_sprinkler, rotary_head, rotor_head
-        }
-        public enum Slope {
-            bottom, flat, slope, top
-        }
-        public enum Soil {
-            clay, sand, silt, top_soil
-        }
-        public enum Vegetation {
-            annuals,garden, grass,perennials, shrubs, trees, xeric, xeriscape
+    public static class ZoneLastReading extends LastReading {
+        private Boolean powered;
+
+        public ZoneLastReading() {
         }
 
+        public Boolean getPowered() {
+            return powered;
+        }
+
+        public void setPowered(Boolean powered) {
+            this.powered = powered;
+        }
+    }
+
+    public enum Shade {
+        none, moderate, mostly
+    }
+
+    public enum Nozzle {
+        fixed_spray_head, drip, manual_sprinkler, rotary_head, rotor_head
+    }
+    public enum Slope {
+        bottom, flat, slope, top
+    }
+    public enum Soil {
+        clay, sand, silt, top_soil
+    }
+    public enum Vegetation {
+        annuals,garden, grass,perennials, shrubs, trees, xeric, xeriscape
     }
 
 }

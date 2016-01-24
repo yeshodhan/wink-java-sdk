@@ -9,54 +9,83 @@ package com.mickoo.iot.wink.devices;
  */
 public class Siren extends WinkDevice {
 
-    private String siren_id;
-
-    private String mode;
-    private Boolean powered;
-    private Integer auto_shutoff;
-
-    private Double battery;
+    private SirenDesiredState desired_state;
+    private SirenLastReading last_reading;
 
     public Siren() {
     }
 
-    public String getSiren_id() {
-        return siren_id;
+    public SirenDesiredState getDesired_state() {
+        return desired_state;
     }
 
-    public void setSiren_id(String siren_id) {
-        this.siren_id = siren_id;
+    public void setDesired_state(SirenDesiredState desired_state) {
+        this.desired_state = desired_state;
     }
 
-    public String getMode() {
-        return mode;
+    public SirenLastReading getLast_reading() {
+        return last_reading;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setLast_reading(SirenLastReading last_reading) {
+        this.last_reading = last_reading;
     }
 
-    public Boolean getPowered() {
-        return powered;
+    public static class SirenDesiredState extends DesiredState {
+        private String mode;
+        private Boolean powered;
+        private Integer auto_shutoff;
+
+        public SirenDesiredState() {
+        }
+
+        public String getMode() {
+            return mode;
+        }
+
+        public void setMode(String mode) {
+            this.mode = mode;
+        }
+
+        public Boolean getPowered() {
+            return powered;
+        }
+
+        public void setPowered(Boolean powered) {
+            this.powered = powered;
+        }
+
+        public Integer getAuto_shutoff() {
+            return auto_shutoff;
+        }
+
+        public void setAuto_shutoff(Integer auto_shutoff) {
+            this.auto_shutoff = auto_shutoff;
+        }
     }
 
-    public void setPowered(Boolean powered) {
-        this.powered = powered;
+    public static class SirenLastReading extends LastReading {
+        private Double battery;
+        private Boolean connection;
+
+        public SirenLastReading() {
+        }
+
+        public Double getBattery() {
+            return battery;
+        }
+
+        public void setBattery(Double battery) {
+            this.battery = battery;
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
     }
 
-    public Integer getAuto_shutoff() {
-        return auto_shutoff;
-    }
-
-    public void setAuto_shutoff(Integer auto_shutoff) {
-        this.auto_shutoff = auto_shutoff;
-    }
-
-    public Double getBattery() {
-        return battery;
-    }
-
-    public void setBattery(Double battery) {
-        this.battery = battery;
-    }
 }

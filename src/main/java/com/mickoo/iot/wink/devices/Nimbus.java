@@ -11,19 +11,10 @@ import java.util.List;
  */
 public class Nimbus extends WinkDevice {
 
-    private String cloud_clock_id;
     private List<Dial> dials;
-    private List<Alarm> alarms;
+    private List<NimbusAlarm> alarms;
 
     public Nimbus() {
-    }
-
-    public String getCloud_clock_id() {
-        return cloud_clock_id;
-    }
-
-    public void setCloud_clock_id(String cloud_clock_id) {
-        this.cloud_clock_id = cloud_clock_id;
     }
 
     public List<Dial> getDials() {
@@ -34,11 +25,11 @@ public class Nimbus extends WinkDevice {
         this.dials = dials;
     }
 
-    public List<Alarm> getAlarms() {
+    public List<NimbusAlarm> getAlarms() {
         return alarms;
     }
 
-    public void setAlarms(List<Alarm> alarms) {
+    public void setAlarms(List<NimbusAlarm> alarms) {
         this.alarms = alarms;
     }
 
@@ -54,24 +45,25 @@ public class Nimbus extends WinkDevice {
         public Double position;
         public Integer brightness;
 
-
-        public static class  DialConfiguration {
-            public Integer min_value, max_value, min_position, max_position;
-            public String scale_type, rotation;
-
-            public DialConfiguration() {
-            }
+        public Dial() {
         }
+    }
 
-        public static class ChannelConfiguration {
-            public String channel_id, reading_type, locale, timezone, location, start_location, stop_location, transit_mode;
-            public List<String> linked_service_ids, linked_service_types;
-            public List<Double> lat_lng, start_lat_lng, stop_lat_lng;
+    public static class DialConfiguration {
+        public Integer min_value, max_value, min_position, max_position;
+        public String scale_type, rotation;
 
-            public ChannelConfiguration() {
-            }
+        public DialConfiguration() {
         }
+    }
 
+    public static class ChannelConfiguration {
+        public String channel_id, reading_type, locale, timezone, location, start_location, stop_location, transit_mode;
+        public List<String> linked_service_ids, linked_service_types;
+        public List<Double> lat_lng, start_lat_lng, stop_lat_lng;
+
+        public ChannelConfiguration() {
+        }
     }
 
 }

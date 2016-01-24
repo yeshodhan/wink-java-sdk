@@ -9,43 +9,58 @@ package com.mickoo.iot.wink.devices;
  */
 public class Doorbell extends WinkDevice {
 
-    private String doorbell_id;
-    private Boolean button_pressed;
-    private Boolean motion;
-    private Double battery;
+    private DoorbellDesiredState desired_state;
 
     public Doorbell() {
     }
 
-    public String getDoorbell_id() {
-        return doorbell_id;
+    public DoorbellDesiredState getDesired_state() {
+        return desired_state;
     }
 
-    public void setDoorbell_id(String doorbell_id) {
-        this.doorbell_id = doorbell_id;
+    public void setDesired_state(DoorbellDesiredState desired_state) {
+        this.desired_state = desired_state;
     }
 
-    public Boolean getButton_pressed() {
-        return button_pressed;
-    }
+    public static class DoorbellDesiredState extends DesiredState {
+        private Boolean button_pressed;
+        private Boolean motion;
+        private Double battery;
+        private Boolean connection;
 
-    public void setButton_pressed(Boolean button_pressed) {
-        this.button_pressed = button_pressed;
-    }
+        public DoorbellDesiredState() {
+        }
 
-    public Boolean getMotion() {
-        return motion;
-    }
+        public Boolean getButton_pressed() {
+            return button_pressed;
+        }
 
-    public void setMotion(Boolean motion) {
-        this.motion = motion;
-    }
+        public void setButton_pressed(Boolean button_pressed) {
+            this.button_pressed = button_pressed;
+        }
 
-    public Double getBattery() {
-        return battery;
-    }
+        public Boolean getMotion() {
+            return motion;
+        }
 
-    public void setBattery(Double battery) {
-        this.battery = battery;
+        public void setMotion(Boolean motion) {
+            this.motion = motion;
+        }
+
+        public Double getBattery() {
+            return battery;
+        }
+
+        public void setBattery(Double battery) {
+            this.battery = battery;
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
     }
 }

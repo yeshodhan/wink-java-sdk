@@ -9,22 +9,11 @@ package com.mickoo.iot.wink.devices;
  */
 public class Refuel extends WinkDevice {
 
-    private String propane_tank_id;
     private Double tare;
     private Long tank_changed_at;
-
-    private Double battery;
-    private Double remaining;
+    private RefuelLastReading last_reading;
 
     public Refuel() {
-    }
-
-    public String getPropane_tank_id() {
-        return propane_tank_id;
-    }
-
-    public void setPropane_tank_id(String propane_tank_id) {
-        this.propane_tank_id = propane_tank_id;
     }
 
     public Double getTare() {
@@ -43,19 +32,46 @@ public class Refuel extends WinkDevice {
         this.tank_changed_at = tank_changed_at;
     }
 
-    public Double getBattery() {
-        return battery;
+    public RefuelLastReading getLast_reading() {
+        return last_reading;
     }
 
-    public void setBattery(Double battery) {
-        this.battery = battery;
+    public void setLast_reading(RefuelLastReading last_reading) {
+        this.last_reading = last_reading;
     }
 
-    public Double getRemaining() {
-        return remaining;
+    public static class RefuelLastReading extends LastReading {
+        private Boolean connection;
+        private Double battery;
+        private Double remaining;
+
+        public RefuelLastReading() {
+        }
+
+        public Boolean getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Boolean connection) {
+            this.connection = connection;
+        }
+
+        public Double getBattery() {
+            return battery;
+        }
+
+        public void setBattery(Double battery) {
+            this.battery = battery;
+        }
+
+        public Double getRemaining() {
+            return remaining;
+        }
+
+        public void setRemaining(Double remaining) {
+            this.remaining = remaining;
+        }
     }
 
-    public void setRemaining(Double remaining) {
-        this.remaining = remaining;
-    }
+
 }
