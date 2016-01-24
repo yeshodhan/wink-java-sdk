@@ -1,6 +1,7 @@
 package com.mickoo.iot.wink.groups;
 
 import com.mickoo.iot.wink.WinkObject;
+import com.mickoo.iot.wink.devices.DesiredState;
 import com.mickoo.iot.wink.members.Member;
 
 import java.util.List;
@@ -14,28 +15,21 @@ import java.util.List;
  */
 public class Group extends WinkObject {
 
-    private String group_id;
     private String name;
     private List<Member> members;
     private String automation_mode; //system_category or user_category, also indicated by a prefix of . or @
     private ReadingAggregation reading_aggregation;
-    private Object desired_state;
+    private DesiredState desired_state;
 
     public Group() {
     }
 
-    public String getGroup_id() {
-        return group_id;
-    }
-
-    public void setGroup_id(String group_id) {
-        this.group_id = group_id;
-    }
-
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -64,11 +58,11 @@ public class Group extends WinkObject {
         this.reading_aggregation = reading_aggregation;
     }
 
-    public Object getDesired_state() {
+    public DesiredState getDesired_state() {
         return desired_state;
     }
 
-    public void setDesired_state(Object desired_state) {
+    public void setDesired_state(DesiredState desired_state) {
         this.desired_state = desired_state;
     }
 

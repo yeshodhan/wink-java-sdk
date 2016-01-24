@@ -16,7 +16,7 @@ public class Effect extends WinkObject {
     private String recipient_actor_id;
     private String recipient_actor_type;
     private String notification_type;
-    private String note;
+    private CustomText note;
 
     public Effect() {
     }
@@ -53,11 +53,53 @@ public class Effect extends WinkObject {
         this.notification_type = notification_type;
     }
 
-    public String getNote() {
+    public CustomText getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(CustomText note) {
         this.note = note;
+    }
+
+    public static class CustomText {
+        private String custom_text_id;
+        private String body;
+        private String subject_id;
+        private String subject_type;
+
+        public CustomText() {
+        }
+
+        public String getCustom_text_id() {
+            return custom_text_id;
+        }
+
+        public void setCustom_text_id(String custom_text_id) {
+            this.custom_text_id = custom_text_id;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+
+        public String getSubject_id() {
+            return subject_id;
+        }
+
+        public void setSubject_id(String subject_id) {
+            this.subject_id = subject_id;
+        }
+
+        public String getSubject_type() {
+            return subject_type;
+        }
+
+        public void setSubject_type(String subject_type) {
+            this.subject_type = subject_type;
+        }
     }
 }

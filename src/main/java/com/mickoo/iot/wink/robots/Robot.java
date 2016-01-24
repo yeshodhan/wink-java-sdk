@@ -1,6 +1,8 @@
 package com.mickoo.iot.wink.robots;
 
 import com.mickoo.iot.wink.WinkObject;
+import com.mickoo.iot.wink.devices.DesiredState;
+import com.mickoo.iot.wink.devices.LastReading;
 
 import java.util.List;
 
@@ -21,9 +23,8 @@ public class Robot extends WinkObject {
     private List<Condition> causes;
     private List<Condition> restrictions;
     private List<Effect> effects;
-    private Boolean enabled;
-    private Integer fired_limit;
-    private Long last_fired;
+    private RobotDesiredState desired_state;
+    private RobotLastReading last_reading;
 
     public Robot() {
     }
@@ -36,10 +37,12 @@ public class Robot extends WinkObject {
         this.robot_id = robot_id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -92,27 +95,58 @@ public class Robot extends WinkObject {
         this.effects = effects;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public RobotDesiredState getDesired_state() {
+        return desired_state;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setDesired_state(RobotDesiredState desired_state) {
+        this.desired_state = desired_state;
     }
 
-    public Integer getFired_limit() {
-        return fired_limit;
+    public RobotLastReading getLast_reading() {
+        return last_reading;
     }
 
-    public void setFired_limit(Integer fired_limit) {
-        this.fired_limit = fired_limit;
+    public void setLast_reading(RobotLastReading last_reading) {
+        this.last_reading = last_reading;
     }
 
-    public Long getLast_fired() {
-        return last_fired;
+    public static class RobotDesiredState extends DesiredState {
+        private Boolean enabled;
+        private Integer fired_limit;
+
+        public RobotDesiredState() {
+        }
+
+        public Boolean getEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(Boolean enabled) {
+            this.enabled = enabled;
+        }
+
+        public Integer getFired_limit() {
+            return fired_limit;
+        }
+
+        public void setFired_limit(Integer fired_limit) {
+            this.fired_limit = fired_limit;
+        }
     }
 
-    public void setLast_fired(Long last_fired) {
-        this.last_fired = last_fired;
+    public static class RobotLastReading extends LastReading {
+        private Boolean fired;
+
+        public RobotLastReading() {
+        }
+
+        public Boolean getFired() {
+            return fired;
+        }
+
+        public void setFired(Boolean fired) {
+            this.fired = fired;
+        }
     }
 }
